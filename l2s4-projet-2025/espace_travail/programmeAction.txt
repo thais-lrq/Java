@@ -1,0 +1,49 @@
+
+Army :
+
+    /**
+     * Reinforce the Army with new Warriors from the player's stock.
+     * @param nbWarriors
+     * @throws IllegalArgumentException
+     */
+    public void reinforce(int additionalWarriors) throws IllegalArgumentException {
+        if (this.nbWarriors + additionalWarriors > MAX_WARRIORS) {
+            throw new IllegalArgumentException("Une armée ne peut pas dépasser 5 guerriers.");
+        }
+        if (!owner.hasEnoughWarriors(additionalWarriors)) {
+            throw new IllegalArgumentException("Le joueur n'a pas assez de guerriers en stock.");
+        }
+        
+        owner.useWarriors(additionalWarriors);
+        this.nbWarriors += additionalWarriors;
+    }
+
+    
+    protected int nbWarriors;
+    private static final int MAX_WARRIORS = 5;
+    
+    /**
+     *  Constructor: Army with between 1 and 5 warriors.
+     * @param position
+     * @param owner
+     * @param nbWarriors;
+     * @throws IllegalArgumentException
+     */
+    public Army(Tiles position, Player owner, int nbWarriors){
+        super(position, owner, nbWarriors);
+        if (nbWarriors >= 1 && nbWarriors <= MAX_WARRIORS) {
+        	if (owner.hasEnoughWarriors(nbWarriors)) {
+        		owner.useWarriors(nbWarriors);
+                this.nbWarriors = nbWarriors;
+        	}
+        }
+        this.nbWarriors = nbWarriors;
+    }
+    
+    /**
+     * 
+     * @return nbWarriors
+     */
+    public int getNumWarriors() {
+        return nbWarriors;
+    }
