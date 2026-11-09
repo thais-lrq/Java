@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "test",
+        "src"
+    ],
+    "java.project.referencedLibraries": [
+        "c:\\Users\\Flori\\Desktop\\POO\\poo\\tp6\\junit-console.jar"
+    ]
+}
